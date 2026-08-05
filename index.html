@@ -9,35 +9,53 @@
 <body>
 
 <nav>
-  <h2>Toko PO</h2>
+  <h2>GO UC STORE</h2>
 
   <ul>
-    <li><a href="#">Beranda</a></li>
+    <li><a href="#beranda">Beranda</a></li>
     <li><a href="#produk">Produk</a></li>
     <li><a href="#cek">Cek Pesanan</a></li>
     <li><a href="#kontak">Kontak</a></li>
   </ul>
 </nav>
 
-<section class="hero">
+<section class="hero" id="beranda">
 
-  <h1>Selamat Datang di Toko PO</h1>
+  <h1>Produk Ready Stock & Pre Order</h1>
 
   <p>
-    Produk Ready Stock & Pre Order
+    Belanja mudah, cek status pesanan kapan saja.
   </p>
 
-  <button>
-    Belanja Sekarang
-  </button>
+  <a href="#produk">
+    <button>Lihat Produk</button>
+  </a>
 
 </section>
 
 <section id="produk">
 
-  <h2>Produk</h2>
+  <h2>Produk Unggulan</h2>
 
-  <div id="productList">
+  <div class="cards">
+
+    <div class="card">
+      <h3>Hoodie Premium</h3>
+      <p>Rp250.000</p>
+      <button>Beli</button>
+    </div>
+
+    <div class="card">
+      <h3>T-Shirt Oversize</h3>
+      <p>Rp120.000</p>
+      <button>Beli</button>
+    </div>
+
+    <div class="card">
+      <h3>Jaket Varsity</h3>
+      <p>Rp350.000</p>
+      <button>Beli</button>
+    </div>
 
   </div>
 
@@ -51,12 +69,18 @@
   type="text"
   placeholder="Masukkan ID Customer">
 
-  <button>
-    Cek Pesanan
-  </button>
+  <button>Cek Pesanan</button>
 
 </section>
 
+<section id="kontak">
+
+  <h2>Kontak</h2>
+
+  <p>WhatsApp: 08xxxxxxxxxx</p>
+
+</section>
+  
 </body>
 </html>
 
