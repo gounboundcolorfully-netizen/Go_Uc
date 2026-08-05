@@ -3,8 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Produk - GO UC STORE</title>
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.product-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+.product-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.product-info{
+    padding:15px;
+}
+
+.price{
+    color:#2563eb;
+    font-weight:bold;
+    font-size:20px;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    background:#e5edff;
+    color:#2563eb;
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+.buy-btn{
+    width:100%;
+    border:none;
+    background:#2563eb;
+    color:white;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+
 </head>
 <body>
 
@@ -12,18 +67,77 @@
   <h2>GO UC STORE</h2>
 </nav>
 
-<section id="produk">
-  <h2>Semua Produk</h2>
+<section>
 
-  <div class="cards">
+<h2 style="text-align:center;margin-top:30px;">
+Produk Tersedia
+</h2>
 
-    <div class="card">
-      <h3>Loading Produk...</h3>
-    </div>
+<div id="productList" class="products">
 
-  </div>
+</div>
 
 </section>
+
+<script>
+
+const API =
+"https://script.google.com/macros/s/AKfycbw1Vo8APpdwZ1ecX94D1STWp970qwtKd59QC8GZzXavDA8XhfWkt1IyZzoeBL8lOfYO0g/exec?action=produk";
+
+fetch(API)
+.then(res => res.json())
+.then(data => {
+
+    let html = "";
+
+    data.forEach(item => {
+
+        html += `
+        <div class="product-card">
+
+            <img src="${
+                item.foto ||
+                'https://via.placeholder.com/400x300'
+            }">
+
+            <div class="product-info">
+
+                <span class="badge">
+                    ${item.jenis}
+                </span>
+
+                <h3>${item.nama}</h3>
+
+                <p>${item.deskripsi}</p>
+
+                <div class="price">
+                    Rp ${Number(item.harga).toLocaleString('id-ID')}
+                </div>
+
+                <br>
+
+                <button class="buy-btn">
+                    Beli Sekarang
+                </button>
+
+            </div>
+
+        </div>
+        `;
+
+    });
+
+    document.getElementById("productList").innerHTML = html;
+
+})
+.catch(err => {
+
+    document.getElementById("productList").innerHTML =
+    "<h3>Gagal memuat produk</h3>";
+
+});
+
+</script>
 
 </body>
 </html>
