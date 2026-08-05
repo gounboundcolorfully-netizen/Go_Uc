@@ -81,24 +81,21 @@ Produk Tersedia
 
 <script>
 
-const API =
-"https://script.google.com/macros/s/AKfycbw1Vo8APpdwZ1ecX94D1STWp970qwtKd59QC8GZzXavDA8XhfWkt1IyZzoeBL8lOfYO0g/exec?action=produk";
+const API = "https://script.google.com/macros/s/AKfycbw1Vo8APpdwZ1ecX94D1STWp970qwtKd59QC8GZzXavDA8XhfWkt1IyZzoeBL8lOfYO0g/exec?action=produk";
 
 fetch(API)
-.then(res => res.json())
+.then(response => response.json())
 .then(data => {
 
-    let html = "";
+    const productList =
+    document.getElementById("productList");
+
+    productList.innerHTML = "";
 
     data.forEach(item => {
 
-        html += `
+        productList.innerHTML += `
         <div class="product-card">
-
-            <img src="${
-                item.foto ||
-                'https://via.placeholder.com/400x300'
-            }">
 
             <div class="product-info">
 
@@ -111,7 +108,7 @@ fetch(API)
                 <p>${item.deskripsi}</p>
 
                 <div class="price">
-                    Rp ${Number(item.harga).toLocaleString('id-ID')}
+                    Rp ${item.harga}
                 </div>
 
                 <br>
@@ -127,13 +124,13 @@ fetch(API)
 
     });
 
-    document.getElementById("productList").innerHTML = html;
-
 })
-.catch(err => {
+.catch(error => {
+
+    console.log(error);
 
     document.getElementById("productList").innerHTML =
-    "<h3>Gagal memuat produk</h3>";
+    "Error: " + error;
 
 });
 
