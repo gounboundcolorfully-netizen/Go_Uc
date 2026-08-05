@@ -83,7 +83,10 @@ Produk Tersedia
 
 const API = "https://script.google.com/macros/s/AKfycbw1Vo8APpdwZ1ecX94D1STWp970qwtKd59QC8GZzXavDA8XhfWkt1IyZzoeBL8lOfYO0g/exec?action=produk";
 
-fetch(API)
+fetch(API,{
+  method:"GET",
+  mode:"cors"
+})
 .then(response => response.json())
 .then(data => {
 
