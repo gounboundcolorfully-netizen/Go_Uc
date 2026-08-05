@@ -81,61 +81,15 @@ Produk Tersedia
 
 <script>
 
-const API = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSLV9stlLrlPwEodUuvN5tCbSmR5wO8oEkj1atIvDHsWcSu7-QkieUE-zVOiUeN1QKjIAbTg0yNEZa27Pg5fQb2Fg1ZnmZRXT-akmTCGTTwJXPq-abdvrIUfbUFjh5yjtmN5EbPKUOK8HabeFPe0hCYG8Alfc4uSqTVcjI3IxyK3tBQHsFlcDvz8nEcR8jb29d2OmNlrR_ZEhEQqFG-7rAWnSjxMv4GIkxaeHBXNr9gaSYBxSn3A6Rr6QuVNk4T5APD6UoC2SfdbIuoQtMcKFSuKMe3uL9JYEXkNiD-3GtmXwPygHI&lib=MbQlyE6RhjLdsIhe2nAIxHHvjfl9DpTmD";
-
-fetch(API,{
-  method:"GET",
-  mode:"cors"
-})
-.then(response => response.json())
-.then(data => {
-
-    const productList =
-    document.getElementById("productList");
-
-    productList.innerHTML = "";
-
-    data.forEach(item => {
-
-        productList.innerHTML += `
-        <div class="product-card">
-
-            <div class="product-info">
-
-                <span class="badge">
-                    ${item.jenis}
-                </span>
-
-                <h3>${item.nama}</h3>
-
-                <p>${item.deskripsi}</p>
-
-                <div class="price">
-                    Rp ${item.harga}
-                </div>
-
-                <br>
-
-                <button class="buy-btn">
-                    Beli Sekarang
-                </button>
-
-            </div>
-
-        </div>
-        `;
-
-    });
-
-})
-.catch(error => {
-
-    console.log(error);
-
-    document.getElementById("productList").innerHTML =
-    "Error: " + error;
-
-});
+document.getElementById("productList").innerHTML =
+`
+<div class="product-card">
+  <div class="product-info">
+    <h3>TEST PRODUK</h3>
+    <p>Kalau ini muncul berarti HTML jalan</p>
+  </div>
+</div>
+`;
 
 </script>
 
